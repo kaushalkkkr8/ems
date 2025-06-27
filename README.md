@@ -2,6 +2,9 @@
 🛠 Engineering Resource Management System (ERMS)
 A full-stack Engineering Resource Management System for managing engineers, projects, and assignments, with capacity tracking and visual analytics.
 
+🌐 Deployed Link
+🔗 Live App: https://ems-frontend-liart.vercel.app/
+
 🚀 Tech Stack
 Frontend (React + TypeScript)
 ⚛️ React + TypeScript
