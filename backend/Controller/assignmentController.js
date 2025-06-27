@@ -18,7 +18,6 @@ const getAllAssignments = async (req, res) => {
   }
 };
 
-// POST create assignment
 const createAssignment = async (req, res) => {
   try {
     const token = req?.headers?.authorization?.split(" ")[1];
@@ -36,7 +35,6 @@ const createAssignment = async (req, res) => {
       return res.status(404).json({ message: "Engineer not found" });
     }
 
-    // Calculate total allocation
     const assignments = await AssignmentModel.find({ engineerId });
     const totalAllocated = assignments.reduce((sum, a) => sum + a.allocationPercentage, 0);
 
@@ -53,7 +51,6 @@ const createAssignment = async (req, res) => {
   }
 };
 
-// PUT update assignment
 const updateAssignment = async (req, res) => {
   try {
     const token = req?.headers?.authorization?.split(" ")[1];
@@ -74,7 +71,6 @@ const updateAssignment = async (req, res) => {
   }
 };
 
-// DELETE assignment
 const deleteAssignment = async (req, res) => {
   try {
     const token = req?.headers?.authorization?.split(" ")[1];

@@ -56,7 +56,6 @@ const getProjectByEngineerId = async (req, res) => {
   }
 };
 
-// POST create a new project
 const createProject = async (req, res) => {
   try {
     const token = req?.headers?.authorization?.split(" ")[1];

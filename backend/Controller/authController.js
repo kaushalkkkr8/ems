@@ -95,7 +95,7 @@ const updateProfile = async (req, res) => {
         skills,
         seniority,
       },
-      { new: true } // returns updated document
+      { new: true } 
     );
 console.log((updatedUser));
 

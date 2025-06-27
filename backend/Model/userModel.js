@@ -4,11 +4,11 @@ const UserSchema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },
     name: { type: String, required: true },
-    password: { type: String, required: true }, // Add for authentication
+    password: { type: String, required: true }, 
     role: { type: String, enum: ["engineer", "manager"], required: true },
-    skills: { type: [String], default: [] }, // Only for engineers
+    skills: { type: [String], default: [] }, 
     seniority: { type: String, enum: ["junior", "mid", "senior"] },
-    maxCapacity: { type: Number, default: 100 }, // 100 or 50
+    maxCapacity: { type: Number, default: 100 }, 
     department: String,
   },
   { timestamps: true }
