@@ -1,24 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAssignment } from '@/context/AssignmentContext';
 import { useEngineer } from '@/context/EngineerContext';
 import { useProject } from '@/context/ProjectContext';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { AssignmentForm } from './type';
+import Assignment from './Assignments';
 
 export default function CreateAssignmentForm() {
   const { register, handleSubmit, formState: { errors } } = useForm<AssignmentForm>();
-  const { createAssignment } = useAssignment();
+
+  const { createAssignment, assignments, getAssignments } = useAssignment();
   const { engineers, fetchEngineers } = useEngineer();
   const { projects, getProjects } = useProject();
+  const [assignmentCreated, setAssignmentCreated] = useState(false);
 
   useEffect(() => {
     fetchEngineers();
     getProjects();
+    getAssignments();
   }, []);
+
+  // Filter out projects that already have an assignment
+  const assignedProjectIds = assignments.map(a => a.projectId);
+  const unassignedProjects = projects.filter(p => !assignedProjectIds.includes(p._id));
 
   const onSubmit = async (data: AssignmentForm) => {
     try {
@@ -27,19 +35,22 @@ export default function CreateAssignmentForm() {
         allocationPercentage: Number(data.allocationPercentage),
       });
       alert('Assignment Created Successfully');
+      setAssignmentCreated(true)
     } catch (error) {
       console.error('Assignment creation failed:', error);
       alert('Failed to create assignment');
     }
   };
+  if (assignmentCreated) return <Assignment />
 
   return (
-     <Card className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl">
+    <Card className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl">
       <CardHeader>
         <CardTitle className="text-2xl">Create Assignment</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Engineer */}
           <div>
             <Label>Engineer</Label>
             <select
@@ -54,6 +65,7 @@ export default function CreateAssignmentForm() {
             {errors.engineerId && <p className="text-red-500 text-sm">Required</p>}
           </div>
 
+          {/* Project */}
           <div>
             <Label>Project</Label>
             <select
@@ -61,13 +73,14 @@ export default function CreateAssignmentForm() {
               className="w-full h-10 border px-3 py-2 rounded-md"
             >
               <option value="">Select Project</option>
-              {projects?.map(p => (
+              {unassignedProjects.map(p => (
                 <option key={p._id} value={p._id}>{p.name}</option>
               ))}
             </select>
             {errors.projectId && <p className="text-red-500 text-sm">Required</p>}
           </div>
 
+          {/* Role and Allocation */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Role</Label>
@@ -91,6 +104,7 @@ export default function CreateAssignmentForm() {
             </div>
           </div>
 
+          {/* Start and End Date */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Start Date</Label>
@@ -112,6 +126,7 @@ export default function CreateAssignmentForm() {
             </div>
           </div>
 
+          {/* Submit Button */}
           <Button type="submit" className="bg-green-600 hover:bg-green-700 w-full">
             Assign
           </Button>

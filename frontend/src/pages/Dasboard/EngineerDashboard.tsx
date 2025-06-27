@@ -1,3 +1,4 @@
+// src/pages/EngineerDashboard.tsx
 import {  useState } from 'react';
 import MyAssignments from '@/components/engineer/Assignment/MyAssignments';
 import { useAuth } from '@/context/AuthContext';
@@ -7,9 +8,10 @@ import {
   ClipboardList,
   User,
   LogOut,
-} from 'lucide-react'; 
+} from 'lucide-react'; // Add more icons if needed
 import dashBg from '@/assets/dasbd.jpg'
 
+// Define User type if not already imported
 type User = {
   name: string;
   email: string;
@@ -26,7 +28,9 @@ export default function EngineerDashboard() {
     <div className="flex min-h-screen" style={{
         backgroundImage: `url(${dashBg})`
       }}>
-      <div className="w-64 bg-white border-r px-4 py-6 space-y-8 shadow-sm">
+      {/* ✅ Sidebar */}
+      <div className="w-64  border-r px-4 py-6 space-y-8 shadow-sm">
+        {/* User Info */}
         <div className="flex items-center gap-3">
           <Avatar>
             <AvatarImage
@@ -39,9 +43,15 @@ export default function EngineerDashboard() {
           </Avatar>
           <div>
             <p className="font-semibold text-sm">{user?.name.toUpperCase()}</p>
+            {/* <p className="text-xs text-muted-foreground">{userData?.email}</p> */}
           </div>
         </div>
 
+        <div className="px-3 py-2   text-center ">
+            <h1 className="text-base font-semibold text-gray-700">👔 Engineer Panel</h1>
+          </div>
+
+        {/* Navigation */}
         <div className="space-y-2 text-sm font-medium">
           <button
             className={`flex items-center w-full px-3 curser-pointer py-2 rounded-md hover:bg-gray-100 transition ${
@@ -76,6 +86,7 @@ export default function EngineerDashboard() {
         </div>
       </div>
 
+      {/* ✅ Main Content */}
       <div className="flex-1 p-6">
         {view === 'assignments' && <MyAssignments />}
         {view === 'profile' && <ProfileCard />}
