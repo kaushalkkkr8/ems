@@ -1,4 +1,3 @@
-// src/components/engineer/EngineerProfile/index.tsx
 
 import { useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
@@ -9,7 +8,6 @@ import { useAuth } from '@/context/AuthContext';
 import type { Profile } from './type';
 import { useEffect } from 'react';
 
-// ✅ Added prop type for cancel callback
 type EngineerProfileProps = {
   onCancel?: () => void;
 };
@@ -36,7 +34,7 @@ export default function EngineerProfile({ onCancel }: EngineerProfileProps) {
         skills: data.skills.split(',').map((s) => s.trim()),
       });
       alert('Profile updated successfully');
-      onCancel?.(); // ✅ Call cancel if provided
+      onCancel?.(); 
     } catch (err: any) {
       alert(err.response?.data?.message || 'Failed to update profile');
     }

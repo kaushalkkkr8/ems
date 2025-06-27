@@ -1,4 +1,4 @@
-// src/components/common/CapacityBar.tsx
+
 import { Progress } from '@/components/ui/progress'
 
 export default function CapacityBar({ value }: { value: number }) {

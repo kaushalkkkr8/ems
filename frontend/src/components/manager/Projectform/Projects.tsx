@@ -8,14 +8,14 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
-import EditProjectForm from './EditProjectForm'; // form for create/edit
+import EditProjectForm from './EditProjectForm'; 
 import type { Project } from '@/context/ProjectContext';
 
 export default function AllProjects() {
   const { projects, getProjects, deleteProject } = useProject();
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [editMode, setEditMode] = useState(false);
-  const [projectToEdit, setProjectToEdit] = useState<Project | null>(null); // ✅ fixed typing
+  const [projectToEdit, setProjectToEdit] = useState<Project | null>(null); 
 
   useEffect(() => {
     getProjects();

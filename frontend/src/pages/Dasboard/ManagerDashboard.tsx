@@ -43,9 +43,7 @@ export default function ManagerDashboard() {
       <div className="flex min-h-screen" style={{
         backgroundImage: `url(${dashBg})`
       }}>
-        {/* Sidebar */}
         <div className="w-64  border-r px-4 py-6 space-y-8 shadow-sm">
-          {/* User Info */}
           <div className="flex items-center gap-3">
             <Avatar>
               <AvatarImage
@@ -67,7 +65,6 @@ export default function ManagerDashboard() {
           </div>
 
 
-          {/* Navigation */}
           <div className="space-y-2 text-sm font-medium">
             <button
               className={`flex items-center w-full px-3 py-2 rounded-md hover:bg-gray-100 transition ${view === 'team' ? 'bg-gray-200 font-semibold' : ''
@@ -78,7 +75,6 @@ export default function ManagerDashboard() {
               Team Overview
             </button>
 
-            {/* Assignment Dropdown */}
             <div>
               <button
                 onClick={() => setAssignmentDropdown(!assignmentDropdown)}
@@ -107,7 +103,6 @@ export default function ManagerDashboard() {
               )}
             </div>
 
-            {/* Projects Dropdown */}
             <div>
               <button
                 onClick={() => setProjectDropdown(!projectDropdown)}
@@ -136,7 +131,6 @@ export default function ManagerDashboard() {
               )}
             </div>
 
-            {/* Logout */}
             <button
               onClick={logout}
               className="flex items-center w-full px-3 py-2 rounded-md text-white bg-red-600 hover:bg-red-700 mt-10"
@@ -147,7 +141,6 @@ export default function ManagerDashboard() {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 p-6">
           {view === 'team' && <TeamOverview />}
           {view === 'create-assignment' && <CreateAssignmentForm />}

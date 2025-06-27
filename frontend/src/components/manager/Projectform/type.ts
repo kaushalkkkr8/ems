@@ -1,12 +1,11 @@
-// src/components/manager/ProjectForm/type.ts
 
 export type Project = {
   _id:string
   name: string;
   description: string;
-  startDate: string; // ISO date string (e.g., "2025-06-25")
+  startDate: string; 
   endDate: string;
-  requiredSkills?: string[]; // parsed from "skills" input field
+  requiredSkills?: string[]; 
   teamSize: number;
   status: 'planning' | 'active' | 'completed';
 };

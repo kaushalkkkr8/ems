@@ -1,7 +1,6 @@
 
 
 
-// src/context/ProjectContext.tsx
 import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
 import api from '@/lib/axios';
@@ -83,7 +82,6 @@ export const ProjectProvider = ({ children }: { children: ReactNode }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // The backend returns: { success: true, project: [...] }
       const populatedProjects = res.data.project.map((p: any) => p.projectId);
       return populatedProjects;
     } catch (error) {

@@ -1,4 +1,3 @@
-// src/components/engineer/MyAssignments.tsx
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import CapacityBar from '@/components/common/CapacityBar';
@@ -34,7 +33,6 @@ export default function MyAssignments() {
             </p>
           </CardHeader>
           <CardContent>
-            {/* You can modify this if you store allocation per assignment */}
             <CapacityBar value={project.teamSize || 0} />
             <div className="mt-2">
               <SkillTagList skills={project.requiredSkills || []} />

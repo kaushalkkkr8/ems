@@ -1,4 +1,3 @@
-// src/components/engineer/EngineerProfile/ProfileCard.tsx
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Label } from '@/components/ui/label';
@@ -11,18 +10,14 @@ export default function ProfileCard() {
     const { user } = useAuth();
     const [editMode, setEditMode] = useState(false);
 
-    // ✅ Avoid duplicate check
     if (!user) return <p className="text-center text-gray-500">Loading profile...</p>;
 
-    // ✅ Show edit profile form if in edit mode
     if (editMode) return <EngineerProfile onCancel={() => setEditMode(false)} />;
 
     return (
         <Card className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl">
 
-            {/* Cover & Edit Button */}
             <div className="relative h-32 bg-gradient-to-r from-blue-500 to-indigo-600">
-                {/* ✅ Toggle edit mode */}
                 <button
                     className="absolute top-3 right-3 bg-white p-1.5 rounded-full hover:bg-gray-100"
                     onClick={() => setEditMode(true)}
@@ -31,7 +26,6 @@ export default function ProfileCard() {
                 </button>
             </div>
 
-            {/* Avatar */}
             <div className="flex justify-center -mt-12">
                 <Avatar className="w-24 h-24 border-4 border-white shadow-md">
                     <AvatarImage
@@ -42,11 +36,9 @@ export default function ProfileCard() {
                 </Avatar>
             </div>
 
-            {/* Profile Details */}
 
             <CardContent>
                 <div className="flex flex-wrap justify-between px-10 py-6 gap-y-6 mx-4" style={{marginLeft:"70px"}}>
-                    {/* Column 1 */}
                     <div className="flex flex-col w-[45%]">
                         <Label className="text-sm text-muted-foreground">Name</Label>
                         <p className="font-medium">{user.name.toUpperCase()}</p>

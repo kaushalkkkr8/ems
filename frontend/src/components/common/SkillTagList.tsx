@@ -1,4 +1,3 @@
-// src/components/common/SkillTagList.tsx
 export default function SkillTagList({ skills }: { skills: string[] }) {
   return (
     <div className="flex flex-wrap gap-2">

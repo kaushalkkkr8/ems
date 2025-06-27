@@ -67,7 +67,6 @@ export default function TeamOverview() {
         />
       </div>
 
-      {/* 🧾 Engineer Table */}
       <div className="overflow-x-auto rounded-lg shadow">
         <table className="min-w-full bg-white">
           <thead className="bg-gray-100">
@@ -108,7 +107,6 @@ export default function TeamOverview() {
         </table>
       </div>
 
-      {/* 📊 Capacity Chart */}
       {chartData.length > 0 && (
         <div className="mt-8">
           <h3 className="text-lg font-semibold mb-2">Capacity Allocation Chart</h3>
@@ -121,7 +119,7 @@ export default function TeamOverview() {
                 <Bar
                   dataKey="allocated"
                   barSize={16}
-                  fill="#22c55e" // green
+                  fill="#22c55e" 
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>

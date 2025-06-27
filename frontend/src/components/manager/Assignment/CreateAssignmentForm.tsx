@@ -40,7 +40,6 @@ export default function CreateAssignmentForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Engineer */}
           <div>
             <Label>Engineer</Label>
             <select
@@ -55,7 +54,6 @@ export default function CreateAssignmentForm() {
             {errors.engineerId && <p className="text-red-500 text-sm">Required</p>}
           </div>
 
-          {/* Project */}
           <div>
             <Label>Project</Label>
             <select
@@ -70,7 +68,6 @@ export default function CreateAssignmentForm() {
             {errors.projectId && <p className="text-red-500 text-sm">Required</p>}
           </div>
 
-          {/* Role and Allocation */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Role</Label>
@@ -94,7 +91,6 @@ export default function CreateAssignmentForm() {
             </div>
           </div>
 
-          {/* Start and End Date */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Start Date</Label>
@@ -116,7 +112,6 @@ export default function CreateAssignmentForm() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <Button type="submit" className="bg-green-600 hover:bg-green-700 w-full">
             Assign
           </Button>

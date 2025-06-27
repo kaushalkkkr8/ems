@@ -39,7 +39,6 @@ export default function ProjectForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Name */}
           <div>
             <Label>Project Name</Label>
             <Input {...register('name', { required: true, minLength: 3 })} />
@@ -48,7 +47,6 @@ export default function ProjectForm() {
             )}
           </div>
 
-          {/* Description */}
           <div>
             <Label>Description</Label>
             <Input {...register('description', { required: true })} />
@@ -57,7 +55,6 @@ export default function ProjectForm() {
             )}
           </div>
 
-          {/* Dates */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Start Date</Label>
@@ -75,7 +72,6 @@ export default function ProjectForm() {
             </div>
           </div>
 
-          {/* Skills */}
           <div>
             <Label>Skills (comma separated)</Label>
             <Input
@@ -84,7 +80,6 @@ export default function ProjectForm() {
             />
           </div>
 
-          {/* Team Size & Status */}
           <div className="flex gap-4">
             <div className="flex-1">
               <Label>Team Size</Label>
@@ -110,7 +105,6 @@ export default function ProjectForm() {
             </div>
           </div>
 
-          {/* Submit Button */}
           <Button type="submit" className="bg-green-600 hover:bg-green-700 w-full">
             Create Project
           </Button>

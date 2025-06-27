@@ -1,4 +1,3 @@
-// src/context/AssignmentContext.tsx
 import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
 import api from '@/lib/axios';
@@ -42,7 +41,7 @@ export const AssignmentProvider = ({ children }: { children: ReactNode }) => {
         },
       });
 
-      setAssignments((prev) => [...prev, res.data.assignment]); // assuming backend sends assignment
+      setAssignments((prev) => [...prev, res.data.assignment]); 
     } catch (err) {
       throw err;
     }
@@ -64,7 +63,7 @@ export const AssignmentProvider = ({ children }: { children: ReactNode }) => {
       console.log({res});
       
 
-      setAssignments(res.data); // assuming backend returns array
+      setAssignments(res.data); 
     } catch (err) {
       console.error('Failed to fetch assignments:', err);
     }
@@ -84,7 +83,6 @@ export const AssignmentProvider = ({ children }: { children: ReactNode }) => {
       },
     });
 
-    // Optionally update local state
     setAssignments((prev) => prev.filter((a: any) => (a as any)._id !== id));
   } catch (err) {
     console.error('Failed to delete assignment:', err);
